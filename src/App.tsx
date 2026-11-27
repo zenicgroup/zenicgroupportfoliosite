@@ -4,52 +4,78 @@
  */
 
 import { useState } from 'react';
+import { MotionConfig } from 'motion/react';
+import { AmbientSpotlight } from './components/AmbientSpotlight';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
+import { EcosystemSection } from './components/EcosystemSection';
 import { SelectedWork } from './components/SelectedWork';
 import { IndustriesSection } from './components/IndustriesSection';
-import { ApproachSection } from './components/ApproachSection';
+import { MissionSection } from './components/MissionSection';
+import { ProcessSection } from './components/ProcessSection';
+import { PricingSection } from './components/PricingSection';
+import { QuoteGeneratorSection } from './components/QuoteGeneratorSection';
+import { BookingSection } from './components/BookingSection';
+import { TestimonialsSection } from './components/TestimonialsSection';
 import { ConversionSection } from './components/ConversionSection';
 import { Footer } from './components/Footer';
 import { ProjectModal } from './components/ProjectModal';
-import { ProjectBriefModal } from './components/ProjectBriefModal';
+import type { PricingPlan } from './config/zenic';
 import type { ShowcaseProject } from './data/portfolio';
+
+function scrollToSection(id: string) {
+  const el = document.getElementById(id);
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
 
 export default function App() {
   const [inspectedProject, setInspectedProject] = useState<ShowcaseProject | null>(null);
-  const [briefModalOpen, setBriefModalOpen] = useState(false);
-  const [selectedIndustry, setSelectedIndustry] = useState<string>('');
+  const [preselectedServiceId, setPreselectedServiceId] = useState<string | null>(null);
 
-  const handleOpenBrief = (industry = '') => {
-    setSelectedIndustry(industry);
-    setBriefModalOpen(true);
+  const handleSelectPlan = (plan: PricingPlan) => {
+    if (plan.id === 'enterprise') {
+      scrollToSection('booking');
+      return;
+    }
+    setPreselectedServiceId(plan.suggestedServiceId ?? 'web-design');
+    scrollToSection('quotation');
+  };
+
+  const handleRequestQuoteForCategory = (_label: string) => {
+    setPreselectedServiceId('web-design');
+    scrollToSection('quotation');
   };
 
   return (
-    <div className="min-h-screen bg-[#05060b] text-slate-100">
-      <Navbar onStartProject={() => handleOpenBrief()} />
+    <MotionConfig reducedMotion="user">
+      <div className="relative min-h-screen bg-[#05060b] text-slate-100">
+        <AmbientSpotlight />
+        <Navbar />
 
-      <main>
-        <Hero onStartProject={() => handleOpenBrief()} />
-        <SelectedWork onInspectProject={setInspectedProject} />
-        <IndustriesSection onSelectIndustry={(industry) => handleOpenBrief(industry)} />
-        <ApproachSection />
-        <ConversionSection onStartProject={() => handleOpenBrief()} />
-      </main>
+        <main>
+          <Hero />
+          <EcosystemSection />
+          <SelectedWork onInspectProject={setInspectedProject} />
+          <IndustriesSection onSelectIndustry={handleRequestQuoteForCategory} />
+          <MissionSection />
+          <ProcessSection />
+          <PricingSection onSelectPlan={handleSelectPlan} />
+          <QuoteGeneratorSection preselectedServiceId={preselectedServiceId} />
+          <BookingSection />
+          <TestimonialsSection />
+          <ConversionSection />
+        </main>
 
-      <Footer />
+        <Footer />
 
-      <ProjectModal
-        project={inspectedProject}
-        onClose={() => setInspectedProject(null)}
-        onRequestSimilar={(category) => handleOpenBrief(category)}
-      />
-
-      <ProjectBriefModal
-        isOpen={briefModalOpen}
-        initialIndustry={selectedIndustry}
-        onClose={() => setBriefModalOpen(false)}
-      />
-    </div>
+        <ProjectModal
+          project={inspectedProject}
+          onClose={() => setInspectedProject(null)}
+          onRequestSimilar={handleRequestQuoteForCategory}
+        />
+      </div>
+    </MotionConfig>
   );
 }

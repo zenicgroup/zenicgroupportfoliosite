@@ -11,6 +11,7 @@ export interface ShowcaseProject {
   filterGroup: Exclude<ProjectGroup, 'all'>;
   description: string;
   highlights: string[];
+  techStack: string[];
   accentColor: string;
   gridSpan: 'wide' | 'compact' | 'full';
 }
@@ -43,12 +44,11 @@ export interface ApproachStep {
 
 export const ZENIC_CONTACT = {
   brand: 'Zenic Group',
-  domain: 'https://zenic.group',
-  domainLabel: 'zenic.group',
-  email: 'hello@zenic.group',
-  phoneDisplay: '+91 6364858361',
-  phoneHref: 'tel:+916364858361',
+  domain: 'https://zenic.in',
+  domainLabel: 'zenic.in',
+  email: 'hello@zenic.in',
   whatsappHref: 'https://wa.me/916364858361',
+  instagramHref: 'https://instagram.com/zenic.group',
 } as const;
 
 export const SHOWCASE_PROJECTS: ShowcaseProject[] = [
@@ -57,8 +57,8 @@ export const SHOWCASE_PROJECTS: ShowcaseProject[] = [
     index: '01',
     name: 'Restro',
     brandTitle: 'The Olive Table',
-    domainLabel: 'restro.kathavahini.in',
-    url: 'https://restro.kathavahini.in/',
+    domainLabel: 'restro.zenic.in',
+    url: 'https://restro.zenic.in/',
     category: 'Restaurant & Hospitality',
     filterGroup: 'hospitality',
     description:
@@ -68,6 +68,7 @@ export const SHOWCASE_PROJECTS: ShowcaseProject[] = [
       'Table reservation and dining hours prominence',
       'Warm atmospheric palette crafted for contemporary dining',
     ],
+    techStack: ['React', 'TypeScript', 'Tailwind CSS'],
     accentColor: '#eab308',
     gridSpan: 'wide',
   },
@@ -76,8 +77,8 @@ export const SHOWCASE_PROJECTS: ShowcaseProject[] = [
     index: '02',
     name: 'Hospital',
     brandTitle: 'Madies Healthcare',
-    domainLabel: 'hospital.kathavahini.in',
-    url: 'https://hospital.kathavahini.in/',
+    domainLabel: 'hospital.zenic.in',
+    url: 'https://hospital.zenic.in/',
     category: 'Healthcare & Medical',
     filterGroup: 'hospitality',
     description:
@@ -87,6 +88,7 @@ export const SHOWCASE_PROJECTS: ShowcaseProject[] = [
       'Clear patient appointment and emergency access paths',
       'Calm clinical contrast prioritizing readability and trust',
     ],
+    techStack: ['React', 'TypeScript', 'Responsive UI'],
     accentColor: '#2dd4bf',
     gridSpan: 'compact',
   },
@@ -95,8 +97,8 @@ export const SHOWCASE_PROJECTS: ShowcaseProject[] = [
     index: '03',
     name: 'Gym',
     brandTitle: 'Forge Athletics',
-    domainLabel: 'gym.kathavahini.in',
-    url: 'https://gym.kathavahini.in/',
+    domainLabel: 'gym.zenic.in',
+    url: 'https://gym.zenic.in/',
     category: 'Fitness & Wellness',
     filterGroup: 'services',
     description:
@@ -106,6 +108,7 @@ export const SHOWCASE_PROJECTS: ShowcaseProject[] = [
       'Structured training programmes and membership comparison',
       'Conversion-ready trial session and enquiry callouts',
     ],
+    techStack: ['React', 'Tailwind CSS', 'Motion'],
     accentColor: '#f43f5e',
     gridSpan: 'compact',
   },
@@ -114,8 +117,8 @@ export const SHOWCASE_PROJECTS: ShowcaseProject[] = [
     index: '04',
     name: 'Interior Design',
     brandTitle: 'Sorel Spaces',
-    domainLabel: 'interior.kathavahini.in',
-    url: 'https://interior.kathavahini.in/',
+    domainLabel: 'interior.zenic.in',
+    url: 'https://interior.zenic.in/',
     category: 'Architecture & Interior Design',
     filterGroup: 'spaces',
     description:
@@ -125,6 +128,7 @@ export const SHOWCASE_PROJECTS: ShowcaseProject[] = [
       'Curated residential and commercial project showcase',
       'Refined architectural grid with restrained editorial pacing',
     ],
+    techStack: ['React', 'TypeScript', 'Editorial Grid'],
     accentColor: '#d6b48a',
     gridSpan: 'wide',
   },
@@ -133,8 +137,8 @@ export const SHOWCASE_PROJECTS: ShowcaseProject[] = [
     index: '05',
     name: 'Pet Care',
     brandTitle: 'Clover & Paws',
-    domainLabel: 'pets.kathavahini.in',
-    url: 'https://pets.kathavahini.in/',
+    domainLabel: 'pets.zenic.in',
+    url: 'https://pets.zenic.in/',
     category: 'Pet Care & Grooming',
     filterGroup: 'spaces',
     description:
@@ -144,6 +148,7 @@ export const SHOWCASE_PROJECTS: ShowcaseProject[] = [
       'Clear presentation of pet essentials and booking flows',
       'Balanced friendly aesthetic built for pet owners',
     ],
+    techStack: ['React', 'Tailwind CSS', 'Web Design'],
     accentColor: '#34d399',
     gridSpan: 'wide',
   },
@@ -163,6 +168,7 @@ export const SHOWCASE_PROJECTS: ShowcaseProject[] = [
       'Clear mentorship, upskilling, and job-readiness pathways',
       'Modern digital platform layout focused on learner conversion',
     ],
+    techStack: ['React', 'Vite', 'Modern Web Platform'],
     accentColor: '#818cf8',
     gridSpan: 'compact',
   },
@@ -182,8 +188,29 @@ export const SHOWCASE_PROJECTS: ShowcaseProject[] = [
       'Core capabilities across facade systems, structural design, and interiors',
       'Strong industrial editorial typography built for developer confidence',
     ],
+    techStack: ['HTML5', 'CSS3', 'Bootstrap Architecture'],
     accentColor: '#f59e0b',
-    gridSpan: 'full',
+    gridSpan: 'wide',
+  },
+  {
+    id: 'relaxrestro',
+    index: '08',
+    name: 'Relax Restro Inn',
+    brandTitle: 'Relax Restro Inn',
+    domainLabel: 'relaxrestro.zenic.in',
+    url: 'https://relaxrestro.zenic.in',
+    category: 'Hotel Management & Billing',
+    filterGroup: 'hospitality',
+    description:
+      'A professional hotel front-desk management system built for streamlined room check-in/out, GST tax invoicing, and real-time guest billing.',
+    highlights: [
+      'Front-desk guest check-in, check-out, and room occupancy workflows',
+      'Automated GST tax invoicing and itemized guest billing ledger',
+      'Real-time cloud persistence engineered for daily hospitality operations',
+    ],
+    techStack: ['React', 'Firebase', 'GST Billing System'],
+    accentColor: '#d97706',
+    gridSpan: 'compact',
   },
 ];
 
@@ -193,35 +220,35 @@ export const INDUSTRIES: IndustryItem[] = [
     name: 'Healthcare & Hospitals',
     description: 'Patient-first medical portals detailing departments, specialists, and appointments.',
     iconName: 'heart-pulse',
-    demoUrl: 'https://hospital.kathavahini.in/',
+    demoUrl: 'https://hospital.zenic.in/',
   },
   {
     id: 'restaurants',
     name: 'Restaurants & Cafes',
     description: 'Menu-forward hospitality experiences built to drive reservations and footfall.',
     iconName: 'utensils',
-    demoUrl: 'https://restro.kathavahini.in/',
+    demoUrl: 'https://restro.zenic.in/',
   },
   {
     id: 'fitness',
     name: 'Fitness & Gyms',
     description: 'Energetic membership showcases highlighting coaching, facilities, and schedules.',
     iconName: 'dumbbell',
-    demoUrl: 'https://gym.kathavahini.in/',
+    demoUrl: 'https://gym.zenic.in/',
   },
   {
     id: 'interior-design',
     name: 'Interior Design & Architecture',
     description: 'Visual spatial monographs tailored for design studios, architects, and ateliers.',
     iconName: 'compass',
-    demoUrl: 'https://interior.kathavahini.in/',
+    demoUrl: 'https://interior.zenic.in/',
   },
   {
     id: 'pet-care',
     name: 'Pet Care & Veterinary',
     description: 'Warm, accessible websites for clinics, grooming studios, and pet retail.',
     iconName: 'paw-print',
-    demoUrl: 'https://pets.kathavahini.in/',
+    demoUrl: 'https://pets.zenic.in/',
   },
   {
     id: 'logistics',

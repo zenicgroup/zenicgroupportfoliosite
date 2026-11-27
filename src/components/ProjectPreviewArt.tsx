@@ -18,6 +18,8 @@ import {
   Layers,
   Building2,
   Ruler,
+  Receipt,
+  KeyRound,
 } from 'lucide-react';
 
 interface ProjectPreviewArtProps {
@@ -60,6 +62,7 @@ export function ProjectPreviewArt({
         {projectId === 'pets' && <PetsPreview />}
         {projectId === 'itcareer' && <ItCareerPreview />}
         {projectId === 'hic' && <HicPreview />}
+        {projectId === 'relaxrestro' && <RelaxRestroPreview />}
       </div>
     </div>
   );
@@ -490,3 +493,57 @@ function HicPreview() {
     </div>
   );
 }
+
+function RelaxRestroPreview() {
+  return (
+    <div className="flex h-full w-full flex-col justify-between bg-[#FFFDF9] p-4 sm:p-5 text-stone-900">
+      {/* Mini Front-Desk Top Bar */}
+      <div className="flex items-center justify-between border-b border-stone-200 pb-2.5">
+        <div className="flex items-center gap-1.5">
+          <KeyRound className="h-3.5 w-3.5 text-amber-700" aria-hidden="true" />
+          <span className="font-display text-[11px] font-bold tracking-tight text-stone-900 uppercase">
+            Relax Restro Inn
+          </span>
+        </div>
+        <div className="flex items-center gap-2 text-[9px] font-medium text-stone-600">
+          <span>Front Desk</span>
+          <span className="rounded bg-amber-600 px-2 py-0.5 font-semibold text-white">
+            GST Billing
+          </span>
+        </div>
+      </div>
+
+      {/* Main Summary */}
+      <div className="my-3 space-y-1.5">
+        <p className="text-[9px] font-semibold tracking-wider text-amber-700 uppercase">
+          Hotel Operations &amp; Invoicing
+        </p>
+        <h4 className="font-display text-base sm:text-lg font-bold leading-snug text-stone-900">
+          Check-In, Room Folio &amp; GST Tax Billing.
+        </h4>
+        <p className="text-[10px] leading-relaxed text-stone-600">
+          Unified front-desk workflow managing guest check-in/out, room charges, and tax invoices.
+        </p>
+      </div>
+
+      {/* Operational Cards */}
+      <div className="grid grid-cols-2 gap-2">
+        <div className="flex items-center gap-2 rounded-lg border border-stone-200 bg-white p-2 shadow-[0_1px_2px_rgba(28,25,23,0.04)]">
+          <CalendarCheck className="h-3.5 w-3.5 text-amber-600 shrink-0" aria-hidden="true" />
+          <div>
+            <p className="text-[10px] font-semibold text-stone-900">Check-In / Out</p>
+            <p className="text-[9px] text-stone-500">Live Room Desk</p>
+          </div>
+        </div>
+        <div className="flex items-center gap-2 rounded-lg border border-stone-200 bg-white p-2 shadow-[0_1px_2px_rgba(28,25,23,0.04)]">
+          <Receipt className="h-3.5 w-3.5 text-amber-600 shrink-0" aria-hidden="true" />
+          <div>
+            <p className="text-[10px] font-semibold text-stone-900">GST Tax Invoice</p>
+            <p className="text-[9px] text-stone-500">Auto Calculation</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+

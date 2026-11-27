@@ -1,44 +1,19 @@
+import { ZENIC_CORPORATE } from '../config/zenic';
+
 export function ZenicLogo({ className = '' }: { className?: string }) {
   return (
-    <span className={`inline-flex items-center gap-2.5 whitespace-nowrap shrink-0 ${className}`}>
-      <svg
-        width="28"
-        height="28"
-        viewBox="0 0 32 32"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-        className="shrink-0"
-      >
-        <defs>
-          <linearGradient id="zenicLogoBg" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stopColor="#6366F1" />
-            <stop offset="100%" stopColor="#7C3AED" />
-          </linearGradient>
-        </defs>
-        <rect width="32" height="32" rx="8" fill="url(#zenicLogoBg)" />
-        <path
-          d="M16 7.5L23.5 11.75L16 16L8.5 11.75L16 7.5Z"
-          stroke="#FFFFFF"
-          strokeWidth="1.65"
-          strokeLinejoin="round"
+    <span
+      className={`group/logo inline-flex items-center gap-2.5 whitespace-nowrap shrink-0 ${className}`}
+    >
+      <span className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-white/10 bg-[#040a1a] transition-all duration-200 group-hover/logo:border-indigo-400/45 group-hover/logo:shadow-[0_0_16px_-4px_rgba(99,102,241,0.5)]">
+        <img
+          src={ZENIC_CORPORATE.logoOfficialPng}
+          alt="Zenic Group official logo"
+          className="h-full w-full object-cover object-center transition-transform duration-300 ease-out group-hover/logo:scale-105"
+          referrerPolicy="no-referrer"
         />
-        <path
-          d="M8.5 16L16 20.25L23.5 16"
-          stroke="#E0E7FF"
-          strokeWidth="1.65"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M8.5 20.25L16 24.5L23.5 20.25"
-          stroke="#C7D2FE"
-          strokeWidth="1.65"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-      <span className="font-display text-[15px] sm:text-base font-bold tracking-[0.06em] text-white uppercase">
+      </span>
+      <span className="font-display text-[15px] sm:text-base font-bold tracking-[0.06em] text-white uppercase transition-colors duration-200 group-hover/logo:text-indigo-100">
         Zenic Group
       </span>
     </span>
